@@ -25,7 +25,7 @@ echo "source ~/.nvm/nvm.sh" >> ~/.bash_profile
 wget --retry-connrefused -q -O - https://get.rvm.io | bash -s stable
 source /home/vagrant/.rvm/scripts/rvm
 
-rvm autolibs read-fail
+rvm autolibs enable
 
 rvm install 2.0.0-p195
 
