@@ -12,6 +12,19 @@ Vagrant.configure("2") do |config|
   # Forward X11
   config.ssh.forward_x11 = true
 
+  config.vm.provider "virtualbox" do |v|
+    v.gui = true
+    v.customize ["modifyvm", :id, "--memory", 2048]
+    v.customize ["modifyvm", :id, "--cpus", 2]
+    v.customize ["modifyvm", :id, "--vram", 128]
+    v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+    v.customize ["modifyvm", :id, "--accelerate3d", "on"]
+    v.customize ["modifyvm", :id, "--accelerate2dvideo", "on"]
+    v.linked_clone = true if Vagrant::VERSION =~ /^1.8/
+
+  end
+
+
  ## Using NFS as it has much better performance
  ## On linux install nfs-kernel-server, MacOS works by default
  ## Will ask for root password to set some things up
